@@ -20,6 +20,13 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 #FLANNEL_IPMASQ=true
 #EOL
 
+# Remove taint for single node
+read -n1 -p "Want to use this cluster with a single node?" single_node
+case $single_node in
+y | Y) kubectl taint node $(hostname) node-role.kubernetes.io/control-plane:NoSchedule- &>/dev/null ;;
+*) echo The taint has not been removed ;;
+esac
+
 # Print the kubeadm join command to join worker nodes to the cluster
 echo "To add worker nodes to the cluster, run the following command on each worker node:"
 echo "sudo kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>"
