@@ -26,3 +26,16 @@ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://a
 sudo apt update
 sudo apt install -y kubeadm kubelet kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
+
+# Set new hostname
+read -p "Please type the desired hostname: " NEW_HOSTNAME
+sudo hostnamectl set-hostname "$NEW_HOSTNAME"
+
+# Set new IP
+read -p "Please type the desired ip (only the last number in the 3X range): " NEW_IP
+sudo sed -i "s/192.168.178.30/192.168.178.$NEW_IP/" /etc/netplan/00-installer-config.yaml
+
+# Reboot
+echo "The system will reboot in 5 seconds..."
+sleep 5
+sudo reboot
