@@ -1,5 +1,5 @@
 # Initialize the Kubernetes cluster
-sudo kubeadm init --control-plane-endpoint=$(hostname -I) --node-name $(hostname) --pod-network-cidr=10.243.0.0/16 >install-output.txt
+sudo kubeadm init --control-plane-endpoint=$(hostname -I) --node-name $(hostname) --pod-network-cidr=10.244.0.0/16 >install-output.txt
 
 # Copy the kubeconfig file to the current user's home directory
 mkdir -p $HOME/.kube
