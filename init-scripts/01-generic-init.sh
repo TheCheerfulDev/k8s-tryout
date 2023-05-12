@@ -7,7 +7,7 @@ sudo apt update
 sudo apt install -y containerd apt-transport-https ca-certificates curl
 
 # Disable swap
-sudo swapoff -a
+sudo sed -i "s/\/swap.img/#\/swap.img/" /etc/fstab
 
 # Prepare containerd config
 sudo mkdir /etc/containerd
@@ -18,7 +18,7 @@ sudo sed -i "s/SystemdCgroup = false/SystemdCgroup = true/" /etc/containerd/conf
 sudo sed -i "s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/" /etc/sysctl.conf
 
 # Enable br_netfilter
-sudo echo "br_netfilter" >/etc/modules-load.d/k8s.conf
+echo "br_netfilter" | sudo tee /etc/modules-load.d/k8s.conf &>/dev/null
 
 # Install Kubernetes tools
 sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
