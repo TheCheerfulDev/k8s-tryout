@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: randomstuff
+  name: randomstuff-deployment
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      nodePort: 31000
+  type: NodePort
+  selector:
+    app: randomstuff

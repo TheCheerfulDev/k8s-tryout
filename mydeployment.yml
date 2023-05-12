@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: randomstuff-deployment
+  labels:
+    app: randomstuff
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: randomstuff
+  template:
+    metadata:
+      labels:
+        app: randomstuff
+    spec:
+      containers:
+        - name: randomstuff
+          image: thecheerfuldev/randomstuff:1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: "2"
+              memory: "256Mi"

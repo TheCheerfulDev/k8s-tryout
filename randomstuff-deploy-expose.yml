@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: randomstuff
+  name: randomstuff-deployment-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      nodePort: 31000
+  type: NodePort
+  selector:
+    app: randomstuff
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: randomstuff-deployment
+  labels:
+    app: randomstuff
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: randomstuff
+  template:
+    metadata:
+      labels:
+        app: randomstuff
+    spec:
+      containers:
+        - name: randomstuff
+          image: thecheerfuldev/randomstuff:1.0
+          ports:
+            - containerPort: 8080
