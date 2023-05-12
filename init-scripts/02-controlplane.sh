@@ -13,13 +13,6 @@ sleep 10
 # Install the Flannel pod network add-on
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
-#sudo bash -c "cat > /run/flannel/subnet.env" <<EOL
-#FLANNEL_NETWORK=10.244.0.0/16
-#FLANNEL_SUBNET=10.244.0.1/24
-#FLANNEL_MTU=1450
-#FLANNEL_IPMASQ=true
-#EOL
-
 # Remove taint for single node
 read -n1 -p "Want to use this cluster with a single node?" single_node
 case $single_node in
