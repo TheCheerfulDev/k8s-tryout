@@ -14,8 +14,8 @@ sleep 10
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 sudo bash -c "cat > /run/flannel/subnet.env" <<EOL
-FLANNEL_NETWORK=10.243.0.0/16
-FLANNEL_SUBNET=10.243.0.1/24
+FLANNEL_NETWORK=10.244.0.0/16
+FLANNEL_SUBNET=10.244.0.1/24
 FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOL
