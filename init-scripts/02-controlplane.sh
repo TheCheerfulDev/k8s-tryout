@@ -14,7 +14,7 @@ sleep 10
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 # Remove taint for single node
-read -n1 -p "Want to use this cluster with a single node?" single_node
+read -n1 -p "Want to use this cluster with a single node?[N/y]" single_node
 case $single_node in
 y | Y) kubectl taint node $(hostname) node-role.kubernetes.io/control-plane:NoSchedule- &>/dev/null ;;
 *) echo The taint has not been removed ;;
