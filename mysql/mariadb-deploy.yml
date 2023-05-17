@@ -75,3 +75,17 @@ spec:
       targetPort: 3306
   selector:
     app: mariadb
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mariadb
+  name: mariadb-deployment-ns
+spec:
+  type: ExternalName
+  externalName: mariadb-deployment-service.database.svc.cluster.local
+  ports:
+    - port: 3306
