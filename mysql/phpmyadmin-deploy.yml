@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-  PMA_HOST: "mariadb-deployment-internal.svc.database.cluster.local"
+  PMA_HOST: "mariadb-deployment-internal.database.svc.cluster.local"
   PMA_PORT: "3306"
 kind: ConfigMap
 metadata:
