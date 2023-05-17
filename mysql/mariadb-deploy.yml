@@ -7,6 +7,7 @@ data:
   MARIADB_ROOT_PASSWORD: V2Vsa29tMDEh
 metadata:
   name: mariadb-info
+  namespace: database
 
 ---
 
@@ -17,6 +18,7 @@ metadata:
   labels:
     app: mariadb-deployment
   name: mariadb-deployment
+  namespace: database
 spec:
   replicas: 1
   selector:
@@ -27,6 +29,7 @@ spec:
     metadata:
       labels:
         app: mariadb
+      namespace: database
     spec:
       containers:
         - image: mariadb:10.6
@@ -45,6 +48,7 @@ metadata:
   labels:
     app: mariadb
   name: mariadb-deployment-service
+  namespace: database
 spec:
   ports:
     - port: 3306
@@ -63,6 +67,7 @@ metadata:
   labels:
     app: mariadb
   name: mariadb-deployment-internal
+  namespace: database
 spec:
   ports:
     - port: 3306
