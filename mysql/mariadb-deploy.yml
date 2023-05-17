@@ -4,6 +4,7 @@ kind: Secret
 data:
   MARIADB_PASSWORD: V2Vsa29tMDEh
   MARIADB_USER: bWFyaw==
+  MARIADB_ROOT_PASSWORD: V2Vsa29tMDEh
 metadata:
   name: mariadb-info
 
