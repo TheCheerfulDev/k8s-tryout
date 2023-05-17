@@ -29,7 +29,7 @@ spec:
         - image: phpmyadmin
           name: phpmyadmin
           ports:
-            - containerPort: 8080
+            - containerPort: 80
 
 ---
 
@@ -41,8 +41,8 @@ metadata:
   name: phpmyadmin-deployment-service
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 80
+      targetPort: 80
       protocol: TCP
       nodePort: 31001
   type: NodePort
