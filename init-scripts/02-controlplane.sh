@@ -5,7 +5,7 @@ kubeadm config print init-defaults >kubeadm-config.yaml
 sed -i 's/clusterName: kubernetes/clusterName: archangel-homelab-cluster/' kubeadm-config.yaml
 
 # Initialize the Kubernetes cluster
-sudo kubeadm init --config=kubeadm-config.yaml --control-plane-endpoint=$(hostname -I) --node-name $(hostname) --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init --config=kubeadm-config.yaml --node-name $(hostname)
 
 # Copy the kubeconfig file to the current user's home directory
 mkdir -p $HOME/.kube
