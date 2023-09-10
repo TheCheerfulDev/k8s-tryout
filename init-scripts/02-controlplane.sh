@@ -1,5 +1,5 @@
 # Initialize the Kubernetes cluster
-sudo kubeadm init --config=/home/mark/kubeadm-config.yaml --node-name $(hostname)
+sudo kubeadm init --config=$HOME/kubeadm-config.yaml --node-name $(hostname)
 
 # Copy the kubeconfig file to the current user's home directory
 mkdir -p $HOME/.kube
